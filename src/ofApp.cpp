@@ -2,7 +2,6 @@
 
 using namespace std;
 
-string settingsPath = ofToDataPath("/Users/bigx/Downloads/test/settings.xml", true);
 
 //--------------------------------------------------------------
 void ofApp::setup() {
@@ -10,11 +9,20 @@ void ofApp::setup() {
 	ofSetFrameRate(30);
 	ofHideCursor();
 	// get conf
+	#ifdef TARGET_OPENGLES
+	string settingsPath = ofToDataPath("/media/movies/settings.xml", true);
+	#else
+	string settingsPath = ofToDataPath("/Users/bigx/Downloads/test/settings.xml", true);
+	#endif
 	conf.load(settingsPath);
 	online = conf.getChild("online").getBoolValue();
 	string videoName = conf.getChild("file").getValue();
 	// video settings
+	#ifdef TARGET_OPENGLES
+	player.load("/media/movies/movies/" + videoName);
+	#else
 	player.load("/Users/bigx/Downloads/test/movies/" + videoName);
+	#endif
 	if (online) player.setPaused(true);
 	else {
 		player.setPaused(false);
