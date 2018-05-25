@@ -4,7 +4,7 @@
 #include "ofxNetwork.h"
 #ifdef TARGET_OPENGLES
 #include "wiringPi.h"
-#include "ofxOMXPlayer.h"
+#include "ofRPIVideoPlayer.h"
 #endif
 
 #define INTERVAL 300
@@ -22,7 +22,7 @@ public:
 	void drawOffline();
 	void drawOnline();
 	#ifdef TARGET_OPENGLES
-	ofxOMXPlayer player;
+	ofRPIVideoPlayer player;
 	#else
 	ofVideoPlayer player;
 	#endif
