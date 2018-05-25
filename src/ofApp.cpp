@@ -19,9 +19,7 @@ void ofApp::setup() {
 	string videoName = conf.getChild("file").getValue();
 	// video settings
 	#ifdef TARGET_OPENGLES
-	ofxOMXPlayerSettings settings;
-	settings.enableLooping = false;
-	player.setup(settings);
+	player.omxPlayer.disableLooping();
 	player.load("/media/movies/movies/" + videoName);
 	#else
 	player.load("/Users/bigx/Downloads/test/movies/" + videoName);
