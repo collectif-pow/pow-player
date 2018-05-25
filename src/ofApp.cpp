@@ -73,6 +73,7 @@ void ofApp::updateOnline() {
 	if (msg == "start") {
 		shouldPlay = true;
 		player.stop();
+		player.play();
 		player.setPaused(false);
 		player.setLoopState(OF_LOOP_NONE);
 	}
@@ -85,6 +86,7 @@ void ofApp::updateOnline() {
 	// play
 	else if (msg == "play") {
 		shouldPlay = true;
+		player.play();
 		player.setPaused(false);
 	}
 	// pause
@@ -95,6 +97,7 @@ void ofApp::updateOnline() {
 	else if (msg == "loop") {
 		shouldPlay = true;
 		player.stop();
+		player.play();
 		player.setPaused(false);
 		player.setLoopState(OF_LOOP_NORMAL);
 	}
