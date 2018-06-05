@@ -1,3 +1,3 @@
-ifdef ($(TARGET_OPENGLES))
-PROJECT_LDFLAGS = -lwiringPi
+ifdef TARGET_OPENGLES
+	PROJECT_LDFLAGS = -lwiringPi
 endif

@@ -17,6 +17,16 @@ void ofApp::setup() {
 	conf.load(settingsPath);
 	online = conf.getChild("online").getBoolValue();
 	string videoName = conf.getChild("file").getValue();
+	// rs232 settings
+	string port = conf.getChild("port").getValue();
+	int baudRate = conf.getChild("baud").getIntValue();
+	onMessage = conf.getChild("on").getValue();
+	offMessage = conf.getChild("off").getValue();
+	if (port.length() > 0 && onMessage.length() > 0 && offMessage.length() > 0 && baudRate > 0) {
+		if (!device.setup(port, baudRate)) {
+			ofLogNotice(__func__) << "Error on serial setup";
+		}
+	}
 	// video settings
 	#ifdef TARGET_OPENGLES
 	player.omxPlayer.disableLooping();
@@ -101,6 +111,16 @@ void ofApp::updateOnline() {
 		player.play();
 		player.setPaused(false);
 		player.setLoopState(OF_LOOP_NORMAL);
+	}
+	else if (msg == "on") {
+		ofx::IO::ByteBuffer textBuffer(onMessage);
+		device.writeBytes(textBuffer);
+		device.writeByte('\r');
+	}
+	else if (msg == "off") {
+		ofx::IO::ByteBuffer textBuffer(offMessage);
+		device.writeBytes(textBuffer);
+		device.writeByte('\r');
 	}
 }
 

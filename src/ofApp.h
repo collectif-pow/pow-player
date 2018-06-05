@@ -2,12 +2,11 @@
 
 #include "ofMain.h"
 #include "ofxNetwork.h"
+#include "ofxSerial.h"
 #ifdef TARGET_OPENGLES
 #include "wiringPi.h"
 #include "ofRPIVideoPlayer.h"
 #endif
-
-#define INTERVAL 300
 
 class ofApp : public ofBaseApp {
 public:
@@ -31,6 +30,10 @@ public:
 	ofXml conf;
 	bool online;
 	bool shouldPlay;
+
+	ofx::IO::SerialDevice device;
+	string onMessage;
+	string offMessage;
 
 	const static int RELAY_PIN = 7;
 };

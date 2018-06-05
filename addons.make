@@ -1,4 +1,7 @@
 ofxNetwork
-ifdef ($(TARGET_OPENGLES))
-ofxOMXPlayer
+ofxIO
+ofxSerial
+ofxPoco
+ifdef TARGET_OPENGLES
+	ofxOMXPlayer
 endif
