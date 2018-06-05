@@ -78,6 +78,24 @@ The available options are:
 *   file: the file name on the folder `movies` on the USB stick
 *   online: `true` or `false`, if `true` the player will respond to network messages, if `false`, it will act as a video looper.
 
+Can be edited directly from the pi with `nano /media/movies/settings.xml`
+
+## Test
+
+You must have netcat. `sudo apt-get install netcat`
+
+*   on : turn on the projector
+*   off : turn off the projector
+*   loop : turn on the player
+*   stop : turn off the player
+
+```
+echo -n "on" | nc -4u -w1 127.0.0.1 8888
+echo -n "off" | nc -4u -w1 127.0.0.1 8888
+echo -n "loop" | nc -4u -w1 127.0.0.1 8888
+echo -n "stop" | nc -4u -w1 127.0.0.1 8888
+```
+
 ## Convert a video
 
 Not sure it's the best way, but it makes the video very light.
