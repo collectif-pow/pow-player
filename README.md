@@ -71,6 +71,7 @@ At the root of the USB stick, place an `xml` file like the following:
 <?xml version="1.0"?>
 <file>test.mp4</file>
 <online>true</online>
+<!-- Below are optional -->
 <port>/dev/ttyUSB0</port>
 <baud>9600</baud>
 <on>* 0 IR 001</on>
@@ -81,10 +82,10 @@ The available options are:
 
 *   file: the file name on the folder `movies` on the USB stick.
 *   online: `true` or `false`, if `true` the player will respond to network messages, if `false`, it will act as a video looper.
-*   port: the serial port of the rs232 adapter, should be `/dev/ttyUSB0` on the RPi.
-*   baud: the baud rate of the rs232 connection, should be 9600 on most projectors.
-*   on: the on ASCII message for the projector.
-*   off: the off ASCII message for the projector.
+*   port (optional) : the serial port of the rs232 adapter, should be `/dev/ttyUSB0` on the RPi.
+*   baud (optional) : the baud rate of the rs232 connection, should be 9600 on most projectors.
+*   on (optional) : the on ASCII message for the projector.
+*   off (optional) : the off ASCII message for the projector.
 
 Can be edited directly from the pi with `nano /media/movies/settings.xml`
 
