@@ -16,6 +16,7 @@ public:
 #endif
 	void update();
 	void draw();
+	void keyPressed(int key);
 	void updateOffline();
 	void updateOnline();
 	void drawOffline();

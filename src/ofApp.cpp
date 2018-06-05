@@ -153,3 +153,10 @@ void ofApp::draw() {
 	if (online) drawOnline();
 	else drawOffline();
 }
+
+//--------------------------------------------------------------
+void ofApp::keyPressed(int key){
+	if (key == 'q'){
+		ofExit();
+	}
+}
