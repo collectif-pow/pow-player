@@ -83,8 +83,11 @@ void ofApp::updateOnline() {
 	// start
 	if (msg == "start") {
 		shouldPlay = true;
+		#ifdef TARGET_OPENGLES
+		player.omxPlayer.restartMovie();
+		#else
 		player.stop();
-		player.play();
+		#endif
 		player.setPaused(false);
 		player.setLoopState(OF_LOOP_NONE);
 	}
@@ -107,7 +110,11 @@ void ofApp::updateOnline() {
 	}
 	else if (msg == "loop") {
 		shouldPlay = true;
+		#ifdef TARGET_OPENGLES
+		player.omxPlayer.restartMovie();
+		#else
 		player.stop();
+		#endif
 		player.play();
 		player.setPaused(false);
 		player.setLoopState(OF_LOOP_NORMAL);
