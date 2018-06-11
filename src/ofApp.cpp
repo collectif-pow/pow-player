@@ -46,24 +46,7 @@ void ofApp::setup() {
 		client.Bind(8888);
 		client.SetNonBlocking(true);
 	}
-	// rpi stuff
-	#ifdef TARGET_OPENGLES
-	setupGPIOs();
-	#endif
 }
-
-//--------------------------------------------------------------
-#ifdef TARGET_OPENGLES
-void ofApp::setupGPIOs(){
-	// setup wiring pi
-	if(wiringPiSetup() == -1) {
-	ofLogNotice(__func__) << "Error on wiringPi setup";
-	}
-	// relay pin
-	pinMode(RELAY_PIN, OUTPUT);
-	digitalWrite(RELAY_PIN, HIGH);
-}
-#endif
 
 //--------------------------------------------------------------
 void ofApp::updateOffline() {
@@ -152,11 +135,4 @@ void ofApp::update() {
 void ofApp::draw() {
 	if (online) drawOnline();
 	else drawOffline();
-}
-
-//--------------------------------------------------------------
-void ofApp::keyPressed(int key){
-	if (key == 'q'){
-		ofExit();
-	}
 }
