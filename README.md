@@ -105,6 +105,17 @@ echo -n "loop" | nc -4u -w1 127.0.0.1 8888
 echo -n "stop" | nc -4u -w1 127.0.0.1 8888
 ```
 
+## WIFI
+
+Run `sudo raspi-config` then configure WiFi in the networking menu.
+
+## Restart the app
+
+```
+cd ~/pow-player
+make RunRelease
+```
+
 ## Convert a video
 
 Not sure it's the best way, but it makes the video very light.
